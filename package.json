@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/un4ckn0wl3z/ExpressRevise/issues"
   },
-  "homepage": "https://github.com/un4ckn0wl3z/ExpressRevise#readme"
+  "homepage": "https://github.com/un4ckn0wl3z/ExpressRevise#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
