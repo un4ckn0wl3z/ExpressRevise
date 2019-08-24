@@ -1,4 +1,3 @@
-const Joi = require('joi');
 const config = require('config');
 const express = require('express');
 const names = require('./routes/names');
