@@ -1,7 +1,28 @@
 const Joi = require('joi');
+const config = require('config');
 const express = require('express');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const app = express();
+const logger = require('./logger');
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+
+// configuration
+console.log('Application Name: ' + config.get('name'));
+console.log('Mail Server: ' + config.get('mail.host'));
+console.log('Mail Password: ' + config.get('mail.password'));
+
+app.use(helmet());
+
+
+if(app.get('env') === 'development'){
+    app.use(morgan('tiny'));
+    console.log('Morgan enable...');
+}
 
 const names =
     [
@@ -72,6 +93,7 @@ app.delete('/api/names/:id', (req, res) => {
     names.splice(nameIndex, 1);
     res.send(name);
 });
+
 
 function validateName(name) {
     const schema = {
