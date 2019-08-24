@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/un4ckn0wl3z/ExpressRevise#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "joi": "^14.3.1"
   }
 }
