@@ -4,7 +4,8 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const app = express();
-const logger = require('./logger');
+const startupDebugger = require('debug')('app:startup');
+const dbDebugger = require('debug')('app:db');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -21,9 +22,10 @@ app.use(helmet());
 
 if(app.get('env') === 'development'){
     app.use(morgan('tiny'));
-    console.log('Morgan enable...');
+    startupDebugger('Morgan enable...');
 }
 
+dbDebugger('Connect to the databases...');
 const names =
     [
         { id: 1, name: 'Anuwat' },
